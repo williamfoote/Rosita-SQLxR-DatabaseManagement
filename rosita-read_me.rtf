@@ -1,0 +1,236 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-BoldOblique;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Oblique;
+\f3\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
+
+\f0\i\b\fs72 \cf0 Rosita
+\f1\i0\b0 \
+
+\fs36 ReadMe File
+\fs72 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \
+
+\fs36 1. Program Summary
+\fs24 \
+\
+Rosita is a program that utilizes R and MySQL to help a local supermarket manage its employees, items, and sales.  A manager simply needs to upload existing information for each of the above categories to MySQL by changing the file names in the included \'93rosita-base.R\'94 file. Then, the program should be easily accessible in R by typing in rosita() in the console.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 2. Installation and Setup\
+
+\fs24 \
+
+\fs28 I. Installing R and MySQL:\
+
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\i \cf0 	Instructions on how to install MySQL can be found {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/"}}{\fldrslt here}}, and instructions on how to install R 	can be found {\field{\*\fldinst{HYPERLINK "https://www.r-project.org/"}}{\fldrslt here}}.\
+\
+	NOTE: The password you set in the installation process will be the one that is used in an R 	command later in the setup process (section\
+
+\f1\i0 \
+
+\fs28 II. Setting up MySQL (after Installation):\
+
+\fs24 \
+	1. Open Terminal (for Mac user)\
+\
+	2. Run the following code to begin MySQL:\
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0  		/usr/local/mysql/bin/mysql -uroot -p\
+	\
+\pard\tx703\tx894\pardeftab560\li814\fi-406\slleading20\partightenfactor0
+\cf0 	3. Run the commands in the create.sql files (note: you can do this by copying and pasting the file into Terminal, and the code will run)\
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 \
+\pard\pardeftab560\li743\fi-62\slleading20\partightenfactor0
+\cf0 4. Done! The database has been created in MySQL. Now, you can upload existing data to the database in MySQL using R.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\fs28 III. Uploading existing data to MySQL:\
+
+\fs24 \
+	While it is not a requirement that existing spreadsheets of employee, inventory, items, etc. data 	already exists, the supermarket manager can upload their existing data to the database so that 	this doesn\'92t have to be manually inputted through Rosita.\
+\
+
+\fs28 IV. Setting Up Rosita\
+
+\fs24 \
+
+\f3\b 	1. Changing File Names\
+
+\f1\b0 \
+		1a. In the 
+\f3\b rosita-setup.R
+\f1\b0  file\
+		\
+			1a2. Lines affected: 
+\f3\b 33-36
+\f1\b0 \
+\
+		1b. In the 
+\f3\b rosita.R
+\f1\b0  file\
+\
+			1a3. Lines affected:
+\f3\b  9-12, 14-15\
+\
+	2. Install packages\
+
+\f1\b0 \
+		2a. In the rosita-setup.R file, run lines 3 and 4 (they are commented out, so remove the 			# at the beginning of the line.\
+\
+
+\f3\b 	3. Connect MySQL to R using the dbConnect() function.\
+\
+
+\f1\b0 		3a. Change the code in line 13 to match your MySQL username and password.\
+\
+		3a1. to find your username, type the following code in MySQL (the entry in the last row 			and second column will contain your user name (typically \'93root\'94 unless changed):\
+			 \
+			\cf2 \CocoaLigature0 select host, user from mysql.user;\
+\
+		3a2. Your password was set in the MySQL installation process. 			Instructions on how to change this password, if desired, can be 			found {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html"}}{\fldrslt here}}.\
+\
+		3b. Run line 22 to set the Global local infile to TRUE (leave this 			code as-is)\
+
+\fs22 \
+
+\f3\b 	
+\fs24 4. Nearly Done!\
+
+\f1\b0 \
+		You can run the rest of the code in the rosita-setup.R file to upload existing data to the 		database in MySQL, and check that the tables have been modified correctly.\
+\
+
+\f3\b 	5. Run all the code in rosita.R\
+
+\f1\b0 		\
+		- This will load all the other helper functions.\
+		- The following 6 files DO NOT need to be opened:\
+			- rosita-sales.R\
+			- rosita-customer.R\
+			- rosita-inventory.R\
+			- rosita-employee.R\
+			- rosita-display_menu.R\
+			- rosita-input_number.R\
+
+\f3\b 	6. Done! \
+\
+		
+\f1\b0 You can now run rosita directly from R by running the following 			code in the R console:
+\f3\b \
+
+\f1\b0 \
+		rosita()\cf0 \CocoaLigature1 \
+\
+
+\fs36 3. Explanation of functions that are used\
+\
+
+\fs28 	I. \'93RMySQL\'94 package and necessary functions\
+
+\fs24 \
+		1. dbConnect/dbDisconnect\
+\
+			1a. these functions are used together. They open and close, respecitvely the 			connection to MySQL from R\
+\
+			1b. To use most of the other other RMySQL functions (to explore the database 			outside of rosita()), one can open a connection to the database in R and use the 			RMySQL functions to edit tables, explore tables, etc.,\
+\
+			1c. NOTE: Once the database is no longer being explored in the above manner, 			make sure to always close the connection with dbDisconnect(). If connections 			are not closed before re-opening the connection, one will eventually run into the 			issue of too many connections being opened (16 is the max).\
+\
+			1c1. Should the above error be met, I have had to restart R to force close the 			connections.\
+\
+			1d. To check if the connection is closed, one can run 	\
+			dbDisconnect(connection_name), and observe the outcomes:\
+\
+				1d1. If the outcome is TRUE, this means the connection was open, and 				the previous call successfully closed it.\
+\
+				1d2. If the error \'93Error in .local(dbObj, ...) : internal error in 				RS_DBI_getConnection: corrupt connection handle\'94 is thrown, this means 				the connection one is trying to close was already closed (not an issue).\
+\
+					1d2a. Note: one may still run into the error in 2 and have to force 					the connection shut if too many connections were opened. That is, 					you can\'92t just keep running dbDisconnect() multiple times to 					backtrack the problem.\
+\
+		2. dbReadTable()\
+\
+			2a. arguments: conn, and name\
+\
+				2a1. conn is the name of your connection. In the base rosita() code, this is 				named mydb. This is a DBIConnection object (so double quotes are not 				needed when typing this argument).\
+\
+				2a2. name is the name of the table that you would like to read. This is a 				character argument, so remember to put it in double quotes (\'93\'94).\
+\
+			2b. Notes:\
+\
+				2b1: The output is a data frame, so it can be saved to a data frame object 				in R if 	desired.\
+\
+		3. dbWriteTable()\
+\
+			3a. arguments (that are used in the scope of rosita()): conn, name, value, 			append, row.names\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 			3a1. conn is the name of your connection. In the base rosita() code, this is 			named mydb. This 	is a DBIConnection object (so double quotes are not needed 			when typing this argument).\
+\
+			3a2. name is the name of the table that you would like to read. This is a 			character argument, so remember to put it in double quotes (\'93\'94).\
+\
+			3a3. value is the values to be added to the table. This should be a data frame 			with the same column names as the table which one is trying to add the data too 			(and in the same order)\
+\
+			3a4. append. This argument is set equal to TRUE, so that we add data to the 			table rather than overwriting it. In the scope of rosita(), it is only needed to be set 			to TRUE, however it can have other values.\
+\
+			3a5. row.names is set to NA in the scope of rosita().  Setting to NA allowed me to 			append data 	to existing tables in rosita() such as Inserting a new employee\'92s 			record in the database.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 		4. dbSendStatement(), followed by dbClearResults()\
+\
+			4a: To execute MySQL functions including UPDATE and DELETE, one must use 			dbSendStatement() to send that function to MySQL.\
+\
+			4b: Arguments: conn and statement\
+\
+				4b1: conn is described above\
+\
+				4b2: statement is a string including the exact function to be sent to and 				executed by MySQL.\
+\
+			4c: Process (IMPORTANT)\
+\
+			4c1: assign dbSendStatment(conn, statement = \'93Your MySQL string\'94) to an 			object (I use rs <- in rosita() code)\
+\
+			4c2: call dbClearResult(rs)\
+\
+				4c2a: This is important that you clear the results using dbClearResults() 				similar to how it is important to disconnect using dbDisconnect(). Also, this 				is why dbSendStatement() should be saved to an object in 4c1.\
+\
+
+\fs36 4. Notes and Acknowledgments:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 	1. Pulled heavily from {\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=uaPBpJArh0M"}}{\fldrslt this}} video on how to make an interactive menu.\
+\
+	2. If an employee is removed, should their id be lost forever? In the current program it is. That 	is, say we have 4 original employees, with ids 1, 2, 3, and 4. If the employee whose id is 2 	quits, and a new one is hired, the new employee will have id 5 rather than 2.\
+\
+	3. DO NOT run the rosita-setup.R file multiple times (after using the rosita() program to run 	your database. This will reset the tables to be the original test data. I suggest saving the tables 	to .csv files regularly, so that they can be reuploaded if necessary.\
+\
+	4. Press \'93esc\'94 to escape the program at any time.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\fs36 5. Future Updates I\'92d like to address: \
+
+\fs24 \
+	1. Allow for changing id numbers.\
+\
+	2. Searching by other things (Employee name, salary, salary greater than a certain number, 	time greater than a number) besides id.\
+\
+	3. A changelog would be cool to keep\
+\
+	4. When you update something should it show the updated table?\
+\
+	5. use ALTER TABLE function in MySQL to add columns. This feature isn\'92t implemented into 	Rosita, but could be. Would be helpful if the manager could add new variables to the database.\
+\
+}
